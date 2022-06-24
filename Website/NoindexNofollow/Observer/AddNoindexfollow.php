@@ -27,9 +27,8 @@ class AddNoindexfollow implements ObserverInterface
         $baseUrl        =   $this->_urlInterface->getBaseUrl();
         $urlKey         =   str_replace($baseUrl,'',$currenturl);
         $urlData        =   $this->_urlCollection->addFieldToFilter('url',['eq' => $urlKey]);
-        $fullActionName =   $observer->getFullActionName();
 
-        if ($urlData->getSize() > 0 && $fullActionName == "catalog_product_view") {
+        if ($urlData->getSize() > 0) {
             $this->layoutFactory->setRobots('NOINDEX,NOFOLLOW');
         }
     }
