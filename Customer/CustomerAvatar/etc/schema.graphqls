@@ -1,0 +1,20 @@
+type Mutation {
+	uploadProfilePic(input: ProfilepicInput): ProfilepicOutput @resolver(class: "Customer\\CustomerAvatar\\Model\\Resolver\\ProfilePic") @doc(description:"Upload Profile Picture")
+}
+
+input ProfilepicInput {
+	name: String! @doc(description:"The file name include extensions")
+	file_content: String! @doc(description:"The  base64 code format's file")
+}
+
+type ProfilepicOutput {
+	items: [ProfilepicReturn]
+}
+
+type ProfilepicReturn {
+	name: String @doc(description: "File Name")
+	full_path: String @doc(description: "File Full path")
+	quote_path: String @doc(description: "File Quote path")
+	order_path: String @doc(description: "File Order path")
+	secret_key: String @doc(description: "File Secret key")
+}
